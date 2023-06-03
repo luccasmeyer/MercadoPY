@@ -4,10 +4,22 @@ import pandas as pd
 from IPython.display import display, HTML
 from io import StringIO
 
+link = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"
 
-url = f'https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=IBM&apikey={chave_api}&datatype=csv'
-r = requests.get(url)
+def cotaces():
+    req = requests.get(link)
+    
+    req_dic = req.json()
 
+    dolar = req_dic['USDBRL']['bid']
+    euro = req_dic['EURBRL']['bid']
+    bitcoin = req_dic['BTCBRL']['bid']
 
-tabala = pd.read_csv(StringIO(r.text))
-display(tabala)
+    texto = f'''
+    dolar: {dolar}
+    euro: {euro}
+    bitcoin: {bitcoin}'''
+
+    print(texto)
+
+cotaces()
