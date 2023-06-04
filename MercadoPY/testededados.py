@@ -1,12 +1,11 @@
-from chave import chave_api
+from chave import link
 import requests
 import pandas as pd
 from IPython.display import display, HTML
 from io import StringIO
 
-link = "https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL"
 
-def cotaces():
+def cotacoes():
     req = requests.get(link)
     
     req_dic = req.json()
@@ -16,10 +15,8 @@ def cotaces():
     bitcoin = req_dic['BTCBRL']['bid']
 
     texto = f'''
-    dolar: {dolar}
-    euro: {euro}
-    bitcoin: {bitcoin}'''
+        dolar: {dolar}
+        euro: {euro}
+        bitcoin: {bitcoin}'''
 
     print(texto)
-
-cotaces()
