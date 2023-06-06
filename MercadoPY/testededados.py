@@ -40,3 +40,4 @@ texto_cotacoes.grid(column=0, row=2, padx=75, pady=10)
 tela.mainloop()
 
 #tentar deixar o label das moedas com o mesmo numero de caracteres
+#teste de pull request
